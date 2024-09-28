@@ -20,8 +20,6 @@ select EMPLOYEE, DATES, STATUS, number_1 - ROW_NUMBER() over(order by employee) 
 where status = 'absent'
 )
 
-
-
 select distinct employee, min(dates) over(partition by part_number, employee order by employee, part_number) as FROM_DATE
 , max(dates) over(partition by part_number, employee order by employee, part_number) as TO_DATE
 , status
@@ -150,7 +148,6 @@ select CUSTOMER_ID, DATES,  STRING_AGG(cast(product_id as varchar), ', ')  as me
 from orders
 group by CUSTOMER_ID, DATES
 )
-
 
 select dates, cast(PRODUCT_ID as varchar) as PRODUCT_ID
 from orders
